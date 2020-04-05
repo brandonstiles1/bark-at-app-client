@@ -39,7 +39,7 @@ class Profile extends Component {
   handleLogout = () => {
     this.props.logoutUser();
   };
-  render() {
+  render () {
     const {
       classes,
       user: {
@@ -51,90 +51,95 @@ class Profile extends Component {
 
     let profileMarkup = !loading ? (
       authenticated ? (
-        <Paper className={classes.paper}>
-          <div className={classes.profile}>
+        <Paper className={ classes.paper }>
+          <div className={ classes.profile }>
             <div className="image-wrapper">
-              <img src={imageUrl} alt="profile" className="profile-image" />
+              <img src={ imageUrl } alt="profile" className="profile-image" />
               <input
                 type="file"
                 id="imageInput"
                 hidden="hidden"
-                onChange={this.handleImageChange}
+                onChange={ this.handleImageChange }
               />
               <MyButton
                 tip="Edit profile picture"
-                onClick={this.handleEditPicture}
+                onClick={ this.handleEditPicture }
                 btnClassName="button"
               >
-                <EditIcon color="primary" />
+                <EditIcon
+                  fontSize='small'
+                  color="primary"
+                />
               </MyButton>
             </div>
             <hr />
             <div className="profile-details">
               <MuiLink
-                component={Link}
-                to={`/users/${handle}`}
+                component={ Link }
+                to={ `/users/${handle}` }
                 color="primary"
                 variant="h5"
               >
-                @{handle}
+                @{ handle }
               </MuiLink>
               <hr />
-              {bio && <Typography variant="body2">{bio}</Typography>}
+              { bio && <Typography variant="body2">{ bio }</Typography> }
               <hr />
-              {location && (
+              { location && (
                 <Fragment>
-                  <LocationOn color="primary" /> <span>{location}</span>
+                  <LocationOn color="primary" /> <span>{ location }</span>
                   <hr />
                 </Fragment>
-              )}
-              {website && (
+              ) }
+              { website && (
                 <Fragment>
                   <LinkIcon color="primary" />
-                  <a href={website} target="_blank" rel="noopener noreferrer">
-                    {' '}
-                    {website}
+                  <a href={ website } target="_blank" rel="noopener noreferrer">
+                    { ' ' }
+                    { website }
                   </a>
                   <hr />
                 </Fragment>
-              )}
-              <CalendarToday color="primary" />{' '}
-              <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
+              ) }
+              <CalendarToday color="primary" />{ ' ' }
+              <span style={ { opacity: '0.55' } }>Joined { dayjs(createdAt).format('MMM YYYY') }</span>
             </div>
-            <MyButton tip="Logout" onClick={this.handleLogout}>
-              <KeyboardReturn color="primary" />
+            <MyButton tip="Logout" onClick={ this.handleLogout }>
+              <KeyboardReturn
+                fontSize='small'
+                color="primary" />
             </MyButton>
             <EditDetails />
           </div>
         </Paper>
       ) : (
-        <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile found, please login again
+          <Paper className={ classes.paper }>
+            <Typography variant="body2" align="center">
+              No profile found, please login again
           </Typography>
-          <div className={classes.buttons}>
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/login"
-            >
-              Login
+            <div className={ classes.buttons }>
+              <Button
+                variant="contained"
+                color="primary"
+                component={ Link }
+                to="/login"
+              >
+                Login
             </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              component={Link}
-              to="/signup"
-            >
-              Signup
+              <Button
+                variant="contained"
+                color="secondary"
+                component={ Link }
+                to="/signup"
+              >
+                Signup
             </Button>
-          </div>
-        </Paper>
-      )
+            </div>
+          </Paper>
+        )
     ) : (
-      <ProfileSkeleton />
-    );
+        <ProfileSkeleton />
+      );
 
     return profileMarkup;
   }

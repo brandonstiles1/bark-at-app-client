@@ -19,7 +19,7 @@ class CommentForm extends Component {
     errors: {}
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
@@ -36,34 +36,34 @@ class CommentForm extends Component {
     this.props.submitComment(this.props.screamId, { body: this.state.body });
   };
 
-  render() {
+  render () {
     const { classes, authenticated } = this.props;
     const errors = this.state.errors;
 
     const commentFormMarkup = authenticated ? (
-      <Grid item sm={12} style={{ textAlign: 'center' }}>
-        <form onSubmit={this.handleSubmit}>
+      <Grid item sm={ 12 } style={ { textAlign: 'center' } }>
+        <form onSubmit={ this.handleSubmit }>
           <TextField
             name="body"
             type="text"
-            label="Comment on scream"
-            error={errors.comment ? true : false}
-            helperText={errors.comment}
-            value={this.state.body}
-            onChange={this.handleChange}
+            label="Bark Back!"
+            error={ errors.comment ? true : false }
+            helperText={ errors.comment }
+            value={ this.state.body }
+            onChange={ this.handleChange }
             fullWidth
-            className={classes.textField}
+            className={ classes.textField }
           />
           <Button
             type="submit"
             variant="contained"
             color="primary"
-            className={classes.button}
+            className={ classes.button }
           >
             Submit
           </Button>
         </form>
-        <hr className={classes.visibleSeparator} />
+        <hr className={ classes.visibleSeparator } />
       </Grid>
     ) : null;
     return commentFormMarkup;

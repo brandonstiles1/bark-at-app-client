@@ -14,11 +14,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 // Icons
-import ChatIcon from '@material-ui/icons/Chat';
+import Barker from '../../images/barker.svg';
+
 // Redux
 import { connect } from 'react-redux';
 
-const styles = {
+const styles = theme => ({
+  ...theme,
   card: {
     position: 'relative',
     display: 'flex',
@@ -31,10 +33,10 @@ const styles = {
     padding: 25,
     objectFit: 'cover'
   }
-};
+});
 
 class Scream extends Component {
-  render() {
+  render () {
     dayjs.extend(relativeTime);
     const {
       classes,
@@ -55,39 +57,39 @@ class Scream extends Component {
 
     const deleteButton =
       authenticated && userHandle === handle ? (
-        <DeleteScream screamId={screamId} />
+        <DeleteScream screamId={ screamId } />
       ) : null;
     return (
-      <Card className={classes.card}>
+      <Card className={ classes.card }>
         <CardMedia
-          image={userImage}
+          image={ userImage }
           title="Profile image"
-          className={classes.image}
+          className={ classes.image }
         />
-        <CardContent className={classes.content}>
+        <CardContent className={ classes.content }>
           <Typography
             variant="h5"
-            component={Link}
-            to={`/users/${userHandle}`}
+            component={ Link }
+            to={ `/users/${userHandle}` }
             color="primary"
           >
-            {userHandle}
+            { userHandle }
           </Typography>
-          {deleteButton}
+          { deleteButton }
           <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).fromNow()}
+            { dayjs(createdAt).fromNow() }
           </Typography>
-          <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
-          <span>{likeCount} Likes</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
+          <Typography variant="body1">{ body }</Typography>
+          <LikeButton screamId={ screamId } />
+          <span>{ likeCount } Likes</span>
+          <MyButton tip="Bark-Backs">
+            <img className={ classes.barker } src={ Barker } alt='barker-icon' />
           </MyButton>
-          <span>{commentCount} comments</span>
+          <span>{ commentCount } Bark-backs</span>
           <ScreamDialog
-            screamId={screamId}
-            userHandle={userHandle}
-            openDialog={this.props.openDialog}
+            screamId={ screamId }
+            userHandle={ userHandle }
+            openDialog={ this.props.openDialog }
           />
         </CardContent>
       </Card>

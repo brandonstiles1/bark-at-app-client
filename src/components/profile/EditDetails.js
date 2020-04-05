@@ -43,7 +43,7 @@ class EditDetails extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-  componentDidMount() {
+  componentDidMount () {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
   }
@@ -62,20 +62,23 @@ class EditDetails extends Component {
     this.props.editUserDetails(userDetails);
     this.handleClose();
   };
-  render() {
+  render () {
     const { classes } = this.props;
     return (
       <Fragment>
         <MyButton
           tip="Edit Details"
-          onClick={this.handleOpen}
-          btnClassName={classes.button}
+          onClick={ this.handleOpen }
+          btnClassName={ classes.button }
         >
-          <EditIcon color="primary" />
+          <EditIcon
+            color="primary"
+            fontSize='small'
+          />
         </MyButton>
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={ this.state.open }
+          onClose={ this.handleClose }
           fullWidth
           maxWidth="sm"
         >
@@ -89,9 +92,9 @@ class EditDetails extends Component {
                 multiline
                 rows="3"
                 placeholder="A short bio about yourself"
-                className={classes.textField}
-                value={this.state.bio}
-                onChange={this.handleChange}
+                className={ classes.textField }
+                value={ this.state.bio }
+                onChange={ this.handleChange }
                 fullWidth
               />
               <TextField
@@ -99,9 +102,9 @@ class EditDetails extends Component {
                 tpye="text"
                 label="Website"
                 placeholder="Your personal/professinal website"
-                className={classes.textField}
-                value={this.state.website}
-                onChange={this.handleChange}
+                className={ classes.textField }
+                value={ this.state.website }
+                onChange={ this.handleChange }
                 fullWidth
               />
               <TextField
@@ -109,18 +112,18 @@ class EditDetails extends Component {
                 tpye="text"
                 label="Location"
                 placeholder="Where you live"
-                className={classes.textField}
-                value={this.state.location}
-                onChange={this.handleChange}
+                className={ classes.textField }
+                value={ this.state.location }
+                onChange={ this.handleChange }
                 fullWidth
               />
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={ this.handleClose } color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={ this.handleSubmit } color="primary">
               Save
             </Button>
           </DialogActions>

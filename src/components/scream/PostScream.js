@@ -38,7 +38,7 @@ class PostScream extends Component {
     body: '',
     errors: {}
   };
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.UI.errors) {
       this.setState({
         errors: nextProps.UI.errors
@@ -62,7 +62,7 @@ class PostScream extends Component {
     event.preventDefault();
     this.props.postScream({ body: this.state.body });
   };
-  render() {
+  render () {
     const { errors } = this.state;
     const {
       classes,
@@ -70,52 +70,52 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Post a Scream!">
+        <MyButton onClick={ this.handleOpen } tip="Bark at a friend!">
           <AddIcon />
         </MyButton>
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={ this.state.open }
+          onClose={ this.handleClose }
           fullWidth
           maxWidth="sm"
         >
           <MyButton
             tip="Close"
-            onClick={this.handleClose}
-            tipClassName={classes.closeButton}
+            onClick={ this.handleClose }
+            tipClassName={ classes.closeButton }
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a new scream</DialogTitle>
+          <DialogTitle>Bark at a friend</DialogTitle>
           <DialogContent>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={ this.handleSubmit }>
               <TextField
                 name="body"
                 type="text"
-                label="SCREAM!!"
+                label="BARK!!!"
                 multiline
                 rows="3"
-                placeholder="Scream at your fellow apes"
-                error={errors.body ? true : false}
-                helperText={errors.body}
-                className={classes.textField}
-                onChange={this.handleChange}
+                placeholder="Bark at your friends"
+                error={ errors.body ? true : false }
+                helperText={ errors.body }
+                className={ classes.textField }
+                onChange={ this.handleChange }
                 fullWidth
               />
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                className={classes.submitButton}
-                disabled={loading}
+                className={ classes.submitButton }
+                disabled={ loading }
               >
                 Submit
-                {loading && (
+                { loading && (
                   <CircularProgress
-                    size={30}
-                    className={classes.progressSpinner}
+                    size={ 30 }
+                    className={ classes.progressSpinner }
                   />
-                )}
+                ) }
               </Button>
             </form>
           </DialogContent>

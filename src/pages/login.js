@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import AppIcon from '../images/icon.png';
+// import AppIcon from '../images/icon.png';
+import AppIcon from '../images/dog.svg';
 import { Link } from 'react-router-dom';
 
 // MUI Stuff
@@ -15,7 +16,21 @@ import { connect } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme,
+  loginForm: {
+    margin: 'auto',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  signUpHere: {
+    opacity: '0.5'
+  },
+  image: {
+    maxWidth: '75px',
+    margin: 'auto',
+    opacity: '0.8',
+    marginTop: '50px'
+  }
 });
 
 class login extends Component {
@@ -27,11 +42,19 @@ class login extends Component {
       errors: {}
     };
   }
-  componentWillReceiveProps(nextProps) {
+
+  componentWillReceiveProps (nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
   }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const userData = {
@@ -40,12 +63,9 @@ class login extends Component {
     };
     this.props.loginUser(userData, this.props.history);
   };
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-  render() {
+
+
+  render () {
     const {
       classes,
       UI: { loading }
@@ -53,24 +73,24 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container className={classes.form}>
+      <Grid container className={ classes.form }>
         <Grid item sm />
-        <Grid item sm>
-          <img src={AppIcon} alt="monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
+        <Grid item sm className={ classes.loginForm }>
+          <img src={ AppIcon } alt="dog" className={ classes.image } />
+          <Typography variant="h2" className={ classes.pageTitle }>
             Login
           </Typography>
-          <form noValidate onSubmit={this.handleSubmit}>
+          <form noValidate onSubmit={ this.handleSubmit }>
             <TextField
               id="email"
               name="email"
               type="email"
               label="Email"
-              className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
+              className={ classes.textField }
+              helperText={ errors.email }
+              error={ errors.email ? true : false }
+              value={ this.state.email }
+              onChange={ this.handleChange }
               fullWidth
             />
             <TextField
@@ -78,33 +98,34 @@ class login extends Component {
               name="password"
               type="password"
               label="Password"
-              className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
+              className={ classes.textField }
+              helperText={ errors.password }
+              error={ errors.password ? true : false }
+              value={ this.state.password }
+              onChange={ this.handleChange }
               fullWidth
             />
-            {errors.general && (
-              <Typography variant="body2" className={classes.customError}>
-                {errors.general}
+            { errors.general && (
+              <Typography variant="body2" className={ classes.customError }>
+                { errors.general }
               </Typography>
-            )}
+            ) }
             <Button
               type="submit"
               variant="contained"
               color="primary"
-              className={classes.button}
-              disabled={loading}
+              className={ classes.button }
+              disabled={ loading }
+              style={ { marginBottom: '30px' } }
             >
               Login
-              {loading && (
-                <CircularProgress size={30} className={classes.progress} />
-              )}
+              { loading && (
+                <CircularProgress size={ 30 } className={ classes.progress } />
+              ) }
             </Button>
             <br />
             <small>
-              dont have an account ? sign up <Link to="/signup">here</Link>
+              <span className={ classes.signUpHere }> Don't have an account yet? Sign up </span> <Link to="/signup">here</Link>
             </small>
           </form>
         </Grid>
