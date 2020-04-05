@@ -38,11 +38,24 @@ Mintmo uses:
 #### User Authorization
 User authentication is handled in React using a mix of BCrypt & the Firebase Authentication SDK.
 
+
+
+
+
 ![login]
 
 
 
+
+
+
+
 ![home]
+
+
+
+
+
 
 #### Barks
 Barks are the main features of Bark-At; think of them as Tweets. Users can edit, delete, & comment on a Bark, & click through them to learn more about the Bark.
@@ -53,11 +66,13 @@ Barks are the main features of Bark-At; think of them as Tweets. Users can edit,
 
 ![sign-up]
 
+
+
+
+
+
 [Bark-at]: https://bark-at-app.netlify.com/
 [Redux]: https://redux.js.org/
-[react-chartjs]:https://github.com/jhudson8/react-chartjs
-[pg_search]:https://github.com/Casecommons/pg_search
-[OmniAuth Facebook]:https://github.com/mkdynamic/omniauth-facebook
 [React]:https://facebook.github.io/react/
 [Flux]:https://facebook.github.io/flux/
 
