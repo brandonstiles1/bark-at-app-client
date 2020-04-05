@@ -83,7 +83,7 @@ Mintmo utilizes [pg_search][pg_search] multisearch to search for transactions ac
 
 
 
-[ape]: ./build/icon.png
+[ape]: https://brandonstiles.dev/static/logo-af0ca0746e04fd92f2a51d8461d3b579.png
 [user-profile]: ./app/assets/images/aboutme.PNG
 [add-account]: ./app/assets/images/addaccount.PNG
 [chart]: ./app/assets/images/chart.PNG
