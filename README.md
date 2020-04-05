@@ -1,80 +1,60 @@
 # Bark-At
 
 ![home]
-![ape]
 
-[Mintmo][mintmo]
+[Bark-At][Bark-at]
 
 
 ## Summary
 
-[Mintmo][mintmo] is a single-page web application inspired by Mint built using Ruby on Rails
-utilizing React.js/flux architecture. Mintmo allows users to:
+[Bark-At][Bark-at] is a single-page web application built using React,
+using a Redux architecture. Similar to Twitter, Bark-at lets you:
 
 * Create an account
-* Log in / Log out (optionally with Facebook)
-* Link to their financial Asset Accounts (Bank Accounts, Credit Cards, Loans, Investments, Property)
-* Add and delete financial Asset Accounts
+* Log in / Log out
+* Add and delete Barks (Tweets)
 * Read, edit, and filter transactions
-* Add notes to transactions
-* View a graphic representation of their financial transactions
+* Add comments to Barks
 * Update profile information, including adding a profile picture
-* Search for transactions within accounts, by account type, and throughout all accounts
 
 ## Overall Structure
 
 #### Back end
-The app was built using Ruby on Rails on the back end with a postgreSQL database. Back end structure is RESTful and all  the data requests use AJAX and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
+The app was built using Node.js, using Axios to make API calls to a no-SQL database using Google Firebase, which retrieves user information & Barks.
 
 #### Front end
-The front end is built completely in [React.js][React] and JavaScript and utilizes React's [Flux][Flux] architecture. React's virtual DOM allows for lightning-quick rerendering without requiring new pages to be sent from the server. Even modals appear/disappear using React rather than toggling CSS display properties.
+The front end is built completely in [React.js][React] and JavaScript and utilizes React's [Redux][Redux] architecture. React's virtual DOM allows for lightning-quick rerendering without requiring new pages to be sent from the server. Even modals appear/disappear using React rather than toggling CSS display properties.
 
 #### Libraries
 
 Mintmo uses:
 - [React.js][React]
-- [Flux][Flux]
-- [Chart.js][Chart.js]
-- [react-chartjs][react-chartjs]
+- [Redux][Redux]
+- [Firebase][Chart.js]
 - [BCrypt](https://github.com/codahale/bcrypt-ruby) for authorization
-- [Paperclip](https://github.com/thoughtbot/paperclip) to store user profile images using Amazon Web Services
-- [figaro](https://github.com/laserlemon/figaro) to securely store keys and other important data.
-- [pg_search][pg_search] to search transactions
-- [accounting.js](https://github.com/openexchangerates/accounting.js) to format amounts into currency
-- [OmniAuth Facebook][OmniAuth Facebook]
 
 ## Primary Components
 
 #### User Authorization
-User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only password hashes. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
+User authentication is handled in React using a mix of BCrypt & the Firebase Authentication SDK.
 
-![signin]
+![login]
 
-#### OmniAuth
-Mintmo uses [OmniAuth Facebook][OmniAuth Facebook] to allow users to sign in using their Facebook credentials. Data including profile pictures, emails, and names are retrieved from the OmniAuth info hash to populate new user profiles.
 
-![user-profile]
 
-#### Financial Accounts
-Financial institutions don't have public APIs that allow third-party sites to access account information such as transaction history and balance. In fact, Mint.com uses a data aggregation agent, Intuit, to do this for them. Therefore, this feature is only a demo simulation. You can provide fake account data, and Mintmo will populate an account with transactions and a balance.
+![home]
 
-![add-account]
+#### Barks
+Barks are the main features of Bark-At; think of them as Tweets. Users can edit, delete, & comment on a Bark, & click through them to learn more about the Bark.
 
-#### Transactions
-Transactions are the heart of Mintmo, and are designed to be extremely flexible. Users can edit, sort, and filter transactions on the fly. Just by typing in the transaction description and category columns, users can update their transaction details quickly and easily.
 
-#### Chart
-Mintmo's top transaction cateogries chart is rendered using [react-chartjs][react-chartjs]
+![comments]
 
-![chart]
 
-#### Search
-Mintmo utilizes [pg_search][pg_search] multisearch to search for transactions across single accounts, by account type, and by attributes including amount, description, category, and more.
+![sign-up]
 
-![search]
-
-[mintmo]: http://www.mymintmo.com/
-[Chart.js]:http://www.chartjs.org/
+[Bark-at]: https://bark-at-app.netlify.com/
+[Redux]: https://redux.js.org/
 [react-chartjs]:https://github.com/jhudson8/react-chartjs
 [pg_search]:https://github.com/Casecommons/pg_search
 [OmniAuth Facebook]:https://github.com/mkdynamic/omniauth-facebook
@@ -84,9 +64,6 @@ Mintmo utilizes [pg_search][pg_search] multisearch to search for transactions ac
 
 
 [home]: https://firebasestorage.googleapis.com/v0/b/social-media-app-e5895.appspot.com/o/Bark-Feed.png?alt=media&token=085fcab4-f246-40aa-8325-d0515f949f82
-[user-profile]: ./app/assets/images/aboutme.PNG
-[add-account]: ./app/assets/images/addaccount.PNG
-[chart]: ./app/assets/images/chart.PNG
-[search]: ./app/assets/images/Search.PNG
-[signin]: ./app/assets/images/signin.PNG
-[home]: ./app/assets/images/homepage.PNG
+[login]: https://firebasestorage.googleapis.com/v0/b/social-media-app-e5895.appspot.com/o/Login.png?alt=media&token=f1b6a96e-b538-4676-b030-44e2a71599f0
+[sign-up]: https://firebasestorage.googleapis.com/v0/b/social-media-app-e5895.appspot.com/o/Sign-Up.png?alt=media&token=10aeb1b6-62be-452a-b875-1d8cb2386593
+[comments]:https://firebasestorage.googleapis.com/v0/b/social-media-app-e5895.appspot.com/o/Comments.png?alt=media&token=0d94f186-b0ca-49ba-9113-fdab177ebad6
