@@ -23,9 +23,9 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           <div className='logo-and-title'>
             <IconButton edge="start" color="inherit" aria-label="menu">
-              <img height='26px' src={ DogWhite } />
+              <img height='26px' src={ DogWhite } alt='dogLogo' />
             </IconButton>
-            <Typography color='white' variant="h6" >
+            <Typography variant="h6" >
               <span style={ { color: '#fff' } }> Bark-At</span>
             </Typography>
           </div>
