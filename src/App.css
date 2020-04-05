@@ -29,7 +29,17 @@ body {
   align-items: center;
 }
 
-.action-container {}
+.action-container {
+  max-width: 40%;
+}
+
+.authenticated-action-container {
+  max-width: 40vw;
+}
+
+.authenticated-action-container a {
+  font-weight: 400;
+}
 
 a {
   text-decoration: none;

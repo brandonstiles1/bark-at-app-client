@@ -40,7 +40,7 @@ class Navbar extends Component {
               <Notifications />
             </div>
           ) : (
-              <Fragment>
+              <div className='authenticated-action-container'>
                 <Button color="inherit" component={ Link } to="/login">
                   Login
               </Button>
@@ -50,7 +50,7 @@ class Navbar extends Component {
                 <Button color="inherit" component={ Link } to="/signup">
                   Signup
               </Button>
-              </Fragment>
+              </div>
             ) }
         </Toolbar>
       </AppBar>
