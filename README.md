@@ -23,7 +23,7 @@ using a Redux architecture. Similar to Twitter, Bark-at lets you:
 The app was built using Node.js, using Axios to make API calls to a no-SQL database using Google Firebase, which retrieves user information & Barks.
 
 #### Front end
-The front end is built completely in [React.js][React] and JavaScript and utilizes React's [Redux][Redux] architecture. React's virtual DOM allows for lightning-quick rerendering without requiring new pages to be sent from the server. Even modals appear/disappear using React rather than toggling CSS display properties.
+The front end is built completely in [React.js][React] and JavaScript & uses React [Redux][Redux] to manage the state. React's virtual DOM allows for lightning-quick rerendering without requiring new pages to be sent from the server. 
 
 #### Libraries
 
